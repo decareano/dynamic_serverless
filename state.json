@@ -1,0 +1,572 @@
+{
+  "$": {
+    "serviceId": "u7iwovc0e2"
+  },
+  "retail-app": {
+    "instanceId": "u7iwovc0e2-sw39i1z0"
+  },
+  "retail-app:webFrontend": {
+    "instanceId": "u7iwovc0e2-y8j8edqj",
+    "type": "static-website",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/static-website",
+    "inputs": {
+      "name": "retail-frontend",
+      "contentPath": "/Users/mgobelli/dynamic_serverless/frontend",
+      "templateValues": {
+        "apiUrl": "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/"
+      },
+      "contentIndex": "index.html",
+      "contentError": "error.html",
+      "hostingRegion": "us-east-1",
+      "hostingDomain": "retail-u7iwovc0e2.example.com",
+      "aliasDomain": "www.retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "name": "retail-frontend",
+      "contentPath": "/Users/mgobelli/dynamic_serverless/frontend",
+      "templateValues": {
+        "apiUrl": "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/"
+      },
+      "contentIndex": "index.html",
+      "contentError": "error.html",
+      "hostingRegion": "us-east-1",
+      "hostingDomain": "retail-u7iwovc0e2.example.com",
+      "aliasDomain": "www.retail-u7iwovc0e2.example.com",
+      "url": "http://retail-u7iwovc0e2.example.com.s3-website-us-east-1.amazonaws.com"
+    }
+  },
+  "retail-app:createProduct": {
+    "instanceId": "u7iwovc0e2-a1x046gd",
+    "type": "aws-lambda",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-lambda",
+    "inputs": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.create",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-a1x046gd"
+    },
+    "state": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.create",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-a1x046gd",
+      "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-a1x046gd",
+      "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-a1x046gd-execution-role",
+      "defaultRole": {
+        "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-a1x046gd-execution-role",
+        "service": "lambda.amazonaws.com",
+        "policy": {
+          "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        },
+        "name": "func-u7iwovc0e2-a1x046gd-execution-role"
+      }
+    }
+  },
+  "retail-app:getProduct": {
+    "instanceId": "u7iwovc0e2-lkrdrzzs",
+    "type": "aws-lambda",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-lambda",
+    "inputs": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.get",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-lkrdrzzs"
+    },
+    "state": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.get",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-lkrdrzzs",
+      "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-lkrdrzzs",
+      "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-lkrdrzzs-execution-role",
+      "defaultRole": {
+        "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-lkrdrzzs-execution-role",
+        "service": "lambda.amazonaws.com",
+        "policy": {
+          "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        },
+        "name": "func-u7iwovc0e2-lkrdrzzs-execution-role"
+      }
+    }
+  },
+  "retail-app:productsApi": {
+    "instanceId": "u7iwovc0e2-uwuhvdyb",
+    "type": "rest-api",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/rest-api",
+    "inputs": {
+      "gateway": "aws-apigateway",
+      "routes": {
+        "/products": {
+          "post": {
+            "function": {
+              "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-a1x046gd",
+              "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-a1x046gd-execution-role"
+            },
+            "cors": true
+          },
+          "/{id}": {
+            "get": {
+              "function": {
+                "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-lkrdrzzs",
+                "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-lkrdrzzs-execution-role"
+              },
+              "cors": true
+            }
+          }
+        },
+        "/catalog/{...categories}": {
+          "get": {
+            "function": {
+              "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-mlkzod0n",
+              "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-mlkzod0n-execution-role"
+            },
+            "cors": true
+          }
+        }
+      },
+      "name": "api-u7iwovc0e2-uwuhvdyb"
+    },
+    "state": {
+      "roleArn": "arn:aws:iam::425160228698:role/api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb",
+      "url": "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/"
+    }
+  },
+  "retail-app:listProducts": {
+    "instanceId": "u7iwovc0e2-mlkzod0n",
+    "type": "aws-lambda",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-lambda",
+    "inputs": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.list",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-mlkzod0n"
+    },
+    "state": {
+      "memory": 512,
+      "timeout": 10,
+      "handler": "products.list",
+      "root": "/Users/mgobelli/dynamic_serverless/code",
+      "env": {
+        "productTableName": "products-u7iwovc0e2"
+      },
+      "name": "func-u7iwovc0e2-mlkzod0n",
+      "arn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-mlkzod0n",
+      "roleArn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-mlkzod0n-execution-role",
+      "defaultRole": {
+        "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-mlkzod0n-execution-role",
+        "service": "lambda.amazonaws.com",
+        "policy": {
+          "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        },
+        "name": "func-u7iwovc0e2-mlkzod0n-execution-role"
+      }
+    }
+  },
+  "retail-app:webFrontend:rootDomainBucket": {
+    "instanceId": "u7iwovc0e2-p8swxs63",
+    "type": "aws-s3-bucket",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-s3-bucket",
+    "inputs": {
+      "name": "retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "name": "retail-u7iwovc0e2.example.com"
+    }
+  },
+  "retail-app:webFrontend:wwwDomainBucket": {
+    "instanceId": "u7iwovc0e2-bnqvkacp",
+    "type": "aws-s3-bucket",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-s3-bucket",
+    "inputs": {
+      "name": "www.retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "name": "www.retail-u7iwovc0e2.example.com"
+    }
+  },
+  "retail-app:webFrontend:rootDomainBucketPolicy": {
+    "instanceId": "u7iwovc0e2-mxtji7yh",
+    "type": "s3-policy",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/s3-policy",
+    "inputs": {
+      "bucketName": "retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "bucketName": "retail-u7iwovc0e2.example.com"
+    }
+  },
+  "retail-app:webFrontend:renderedFiles": {
+    "instanceId": "u7iwovc0e2-l9t44j5j"
+  },
+  "retail-app:webFrontend:siteCloudFrontConfig": {
+    "instanceId": "u7iwovc0e2-qhp0t0xk",
+    "type": "aws-cloudfront",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-cloudfront",
+    "inputs": {
+      "name": "retail-frontend",
+      "defaultRootObject": "index.html",
+      "originId": "retail-u7iwovc0e2.example.com",
+      "originDomain": "retail-u7iwovc0e2.example.com.s3.amazonaws.com",
+      "aliasDomain": "www.retail-u7iwovc0e2.example.com",
+      "distributionEnabled": true,
+      "loggingEnabled": false,
+      "loggingBucket": "",
+      "loggingIncludeCookies": false,
+      "loggingPrefix": ""
+    },
+    "state": {
+      "name": "retail-frontend",
+      "defaultRootObject": "index.html",
+      "originId": "retail-u7iwovc0e2.example.com",
+      "originDomain": "retail-u7iwovc0e2.example.com.s3.amazonaws.com",
+      "aliasDomain": "www.retail-u7iwovc0e2.example.com",
+      "distributionEnabled": true,
+      "loggingEnabled": false,
+      "loggingBucket": "",
+      "loggingIncludeCookies": false,
+      "loggingPrefix": "",
+      "distribution": {
+        "id": "E15UVLZTCCR0Z7",
+        "arn": "arn:aws:cloudfront::425160228698:distribution/E15UVLZTCCR0Z7",
+        "status": "InProgress",
+        "lastModifiedTime": "2019-02-27T19:29:11.171Z",
+        "domainName": "d2xdossjowj2w5.cloudfront.net",
+        "location": "https://cloudfront.amazonaws.com/2017-10-30/distribution/E15UVLZTCCR0Z7",
+        "eTag": "EG39YV665BM3J",
+        "distConfig": {
+          "callerReference": "retail-frontend-1551295750",
+          "enabled": true
+        }
+      }
+    }
+  },
+  "retail-app:webFrontend:rootDomainBucketConfig": {
+    "instanceId": "u7iwovc0e2-xmq8yjlc",
+    "type": "s3-website-config",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/s3-website-config",
+    "inputs": {
+      "rootBucketName": "retail-u7iwovc0e2.example.com",
+      "indexDocument": "index.html",
+      "errorDocument": "error.html",
+      "redirectBucketName": "www.retail-u7iwovc0e2.example.com",
+      "redirectToHostName": "retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "rootBucketName": "retail-u7iwovc0e2.example.com",
+      "indexDocument": "index.html",
+      "errorDocument": "error.html",
+      "redirectBucketName": "www.retail-u7iwovc0e2.example.com",
+      "redirectToHostName": "retail-u7iwovc0e2.example.com"
+    }
+  },
+  "retail-app:webFrontend:siteContentUploader": {
+    "instanceId": "u7iwovc0e2-qs7xekxt",
+    "type": "s3-sync",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/s3-sync",
+    "inputs": {
+      "contentPath": "/var/folders/wh/8sl49ddj5_360h0smdnhfnpr0000gn/T/tmp-172195l0LZ0c2fXeb",
+      "bucketName": "retail-u7iwovc0e2.example.com"
+    },
+    "state": {
+      "contentPath": "/var/folders/wh/8sl49ddj5_360h0smdnhfnpr0000gn/T/tmp-172195l0LZ0c2fXeb",
+      "bucketName": "retail-u7iwovc0e2.example.com"
+    }
+  },
+  "retail-app:webFrontend:siteRoute53Config": {
+    "instanceId": "u7iwovc0e2-ug3d925i",
+    "type": "aws-route53",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-route53",
+    "inputs": {
+      "name": "retail-frontend-site-u7iwovc0e2-y8j8edqj",
+      "domainName": "www.retail-u7iwovc0e2.example.com",
+      "dnsName": "d2xdossjowj2w5.cloudfront.net"
+    },
+    "state": {
+      "name": "retail-frontend-site-u7iwovc0e2-y8j8edqj",
+      "domainName": "www.retail-u7iwovc0e2.example.com",
+      "dnsName": "d2xdossjowj2w5.cloudfront.net",
+      "hostedZone": {
+        "id": "/hostedzone/Z2OIOHFQKBD22F",
+        "name": "www.retail-u7iwovc0e2.example.com.",
+        "callerReference": "retail-frontend-site-u7iwovc0e2-y8j8edqj-1551295768",
+        "resourceRecordSetCount": 2,
+        "privateZone": false,
+        "location": "https://route53.amazonaws.com/2013-04-01/hostedzone/Z2OIOHFQKBD22F",
+        "changeInfo": {
+          "id": "/change/C1IE9CXNG37TXF",
+          "status": "PENDING",
+          "submittedAt": "2019-02-27T19:29:29.715Z"
+        },
+        "delegationSet": {
+          "nameServers": [
+            "ns-550.awsdns-04.net",
+            "ns-1741.awsdns-25.co.uk",
+            "ns-1187.awsdns-20.org",
+            "ns-51.awsdns-06.com"
+          ]
+        }
+      },
+      "changeRecordSet": {
+        "changeInfo": {
+          "id": "/change/C1280RWW5W09IY",
+          "status": "PENDING",
+          "submittedAt": "2019-02-27T19:29:30.082Z",
+          "comment": "CloudFront distribution for 'www.retail-u7iwovc0e2.example.com'"
+        }
+      }
+    }
+  },
+  "retail-app:createProduct:defaultRole": {
+    "instanceId": "u7iwovc0e2-6aic9lal",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "func-u7iwovc0e2-a1x046gd-execution-role",
+      "service": "lambda.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-a1x046gd-execution-role",
+      "service": "lambda.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "func-u7iwovc0e2-a1x046gd-execution-role"
+    }
+  },
+  "retail-app:getProduct:defaultRole": {
+    "instanceId": "u7iwovc0e2-pfztgvgd",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "func-u7iwovc0e2-lkrdrzzs-execution-role",
+      "service": "lambda.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-lkrdrzzs-execution-role",
+      "service": "lambda.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "func-u7iwovc0e2-lkrdrzzs-execution-role"
+    }
+  },
+  "retail-app:listProducts:defaultRole": {
+    "instanceId": "u7iwovc0e2-w65ggo26",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "func-u7iwovc0e2-mlkzod0n-execution-role",
+      "service": "lambda.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::425160228698:role/func-u7iwovc0e2-mlkzod0n-execution-role",
+      "service": "lambda.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "func-u7iwovc0e2-mlkzod0n-execution-role"
+    }
+  },
+  "retail-app:productsDb": {
+    "instanceId": "u7iwovc0e2-vyh79lz4",
+    "type": "aws-dynamodb",
+    "internallyManaged": false,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-dynamodb",
+    "inputs": {
+      "region": "us-east-1",
+      "tables": [
+        {
+          "name": "products-u7iwovc0e2",
+          "hashKey": "id",
+          "indexes": [
+            {
+              "name": "ProductIdIndex",
+              "type": "global",
+              "hashKey": "id"
+            }
+          ],
+          "schema": {
+            "id": "number",
+            "name": "string",
+            "description": "string",
+            "price": "number"
+          },
+          "options": {
+            "timestamps": true
+          }
+        }
+      ]
+    },
+    "state": {
+      "ddbtables": [
+        {
+          "products-u7iwovc0e2": {
+            "TableDescription": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "N"
+                }
+              ],
+              "TableName": "products-u7iwovc0e2",
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "TableStatus": "CREATING",
+              "CreationDateTime": "2019-02-27T19:28:20.367Z",
+              "ProvisionedThroughput": {
+                "NumberOfDecreasesToday": 0,
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              },
+              "TableSizeBytes": 0,
+              "ItemCount": 0,
+              "TableArn": "arn:aws:dynamodb:us-east-1:425160228698:table/products-u7iwovc0e2",
+              "TableId": "f3ac44da-ec13-4632-9410-f2cc4af33a34",
+              "GlobalSecondaryIndexes": [
+                {
+                  "IndexName": "ProductIdIndex",
+                  "KeySchema": [
+                    {
+                      "AttributeName": "id",
+                      "KeyType": "HASH"
+                    }
+                  ],
+                  "Projection": {
+                    "ProjectionType": "ALL"
+                  },
+                  "IndexStatus": "CREATING",
+                  "ProvisionedThroughput": {
+                    "NumberOfDecreasesToday": 0,
+                    "ReadCapacityUnits": 1,
+                    "WriteCapacityUnits": 1
+                  },
+                  "IndexSizeBytes": 0,
+                  "ItemCount": 0,
+                  "IndexArn": "arn:aws:dynamodb:us-east-1:425160228698:table/products-u7iwovc0e2/index/ProductIdIndex"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "retail-app:productsApi:iam": {
+    "instanceId": "u7iwovc0e2-7iakexl0",
+    "type": "aws-iam-role",
+    "internallyManaged": true,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-iam-role",
+    "inputs": {
+      "name": "api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb",
+      "service": "apigateway.amazonaws.com"
+    },
+    "state": {
+      "arn": "arn:aws:iam::425160228698:role/api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb",
+      "service": "apigateway.amazonaws.com",
+      "policy": {
+        "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+      },
+      "name": "api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb"
+    }
+  },
+  "retail-app:productsApi:apig": {
+    "instanceId": "u7iwovc0e2-b91fx3jk",
+    "type": "aws-apigateway",
+    "internallyManaged": true,
+    "rootPath": "../../../usr/local/lib/node_modules/serverless-components/registry/aws-apigateway",
+    "inputs": {
+      "name": "api-u7iwovc0e2-uwuhvdyb",
+      "roleArn": "arn:aws:iam::425160228698:role/api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb",
+      "routes": {
+        "products": {
+          "POST": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-a1x046gd",
+            "cors": true
+          }
+        },
+        "products/{id}": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-lkrdrzzs",
+            "cors": true
+          }
+        },
+        "catalog/{categories+}": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-mlkzod0n",
+            "cors": true
+          }
+        }
+      }
+    },
+    "state": {
+      "name": "api-u7iwovc0e2-uwuhvdyb",
+      "roleArn": "arn:aws:iam::425160228698:role/api-u7iwovc0e2-uwuhvdyb-iam-role-u7iwovc0e2-uwuhvdyb",
+      "routes": {
+        "products": {
+          "POST": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-a1x046gd",
+            "cors": true
+          }
+        },
+        "products/{id}": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-lkrdrzzs",
+            "cors": true
+          }
+        },
+        "catalog/{categories+}": {
+          "GET": {
+            "lambdaArn": "arn:aws:lambda:us-east-1:425160228698:function:func-u7iwovc0e2-mlkzod0n",
+            "cors": true
+          }
+        }
+      },
+      "id": "3ta2c8u4r4",
+      "url": "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/",
+      "urls": [
+        "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/products",
+        "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/products/{id}",
+        "https://3ta2c8u4r4.execute-api.us-east-1.amazonaws.com/dev/catalog/{categories+}"
+      ]
+    }
+  }
+}
